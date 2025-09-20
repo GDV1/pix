@@ -1,59 +1,33 @@
-# Pix
+# Estudo de caso - Pix
+Este projeto é um estudo de caso sobre tudo o que diz respeito ao framework Angular.
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.4.
+Iremos trabalhar com RxJs, Observables, NgRx, Clean Code além de definir uma arquitetura básica/padrão para projetos Angular do ponto de vista de organização de código, arquivos e pastas.
 
-## Development server
+Vamos simular o sistema de pagamentos instantâneo do Banco Central do Brasil (BCB), o Pix. O objetivo desse projeto é entender melhor sobre Arquitetura de Projetos/System Design, Gerenciamento de Estado Global da aplicação e Boas Práticas de Desenvolvimento. 
 
-To start a local development server, run:
+Para isso, nesse README, vamos definir a arquitetura padrão que será usada com base nas recomendações do Style Guide do Angular e vamos separar em branches as implementações usando RxJs e NgRx, afim de documentar e ter exemplos de implementação. 
 
-```bash
-ng serve
+## System Design
+A organização do sistema seguirá o exposto a seguir e, sempre que necessário, passará por atualizações para compreender os itens que forem adicionados ao projeto.
+
 ```
+src/app
+ ├── core/                 # Serviços centrais (auth, interceptors, guards)
+ ├── features/
+ │    ├── pagamentos/      # Pagamentos via QR Code e Pix Copia e Cola
+ │    ├── transferencias/  # Transferências Pix entre contas
+ │    ├── chaves/          # Cadastro e gestão de chaves Pix
+ │    ├── contatos/        # Lista e gestão de contatos
+ │    ├── extrato/         # Histórico e extrato de transações
+ │    └── dashboard/       # Tela inicial (resumo do saldo e atalhos)
+ ├── shared/
+ |    |── components                  # Componentes e utilitários reutilizáveis
+ |    |── services                    # Services
+ |    |── typings/interfaces          # Arquivos de types ou interfaces
+ |    |── enums                       # Enums
+ └── app.config.ts         # Rotas e bootstrap da aplicação
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
-ng generate component component-name
 ```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
